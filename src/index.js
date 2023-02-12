@@ -1,6 +1,7 @@
 import React, {useState} from 'react';
 import ReactDOM from 'react-dom';
 import './index.css';
+import './SubmitPage'
 // import { BrowserRouter} from "react-router-dom";
 // import reportWebVitals from './reportWebVitals';
 // import heart from './heart.png'
@@ -14,71 +15,18 @@ import {
 
  import {Link} from "react-router-dom";
 
+ import SubmitPage from './SubmitPage';
+import FeedPage from './FeedPage';
+
 const App = () => {
   return (
     <Router>
       <Routes>
         <Route path="/" element={<SubmitPage />} />
-        <Route path="homepage" element={<HomePage respondedUsers={usersData} promptID={promptID} prompt={prompts[promptID]}/>} />
+        <Route path="homepage" element={<FeedPage respondedUsers={usersData} promptID={promptID} prompt={prompts[promptID]}/>} />
       </Routes>
     </Router>
   );
-}
-
-class SubmitPage extends React.Component
-{
-  constructor(props)
-  {
-    super(props);
-
-    this.state = {
-
-    };
-  }
-  render()
-  {
-    return (
-      <div>
-      <h3 className="center"> Today's Prompt: </h3>
-      <h1 className="heading center"> What would you do if your crush confessed to your best friend on Valentine’s Day? </h1>
-      <textarea className="center" rows="4" cols="50" onFocus={this.value=''}>
-      start typing...
-      </textarea>
-      <br/>
-      <button className="center button-1" onClick={this.props.onSubmit}> Throw in Your Pebble </button>
-      <Link to="/homepage">Go to homepage</Link>
-    </div>);
-  }
-}
-
-class HomePage extends React.Component
-{
-  constructor(props)
-  {
-    super(props);
-
-    this.state =
-    {
-      respondedUsers: this.props.respondedUsers,
-      promptID: this.props.promptID,
-      prompt: this.props.prompt,
-      cardSelected: false
-    }
-  }
-  render()
-  {
-    //return <h1 className="heading center">Prompt: {this.state.prompt}</h1>;
-    return (
-    <div className="center" style={{width: '1000px'}}>
-        <h1 className="heading center">Prompt: {this.state.prompt}</h1>
-          {
-            this.state.respondedUsers.map(user => 
-            <Card username={user.username} response={user.responses[0]} onClick={() => {
-              this.setState({cardSelected: !this.state.cardSelected});
-              }}/>)
-          }
-      </div>);
-  }
 }
 
 class User
@@ -199,7 +147,15 @@ for(let i = 0; i < usersData.length; i++)
   usersData[i].responses[0] = "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.";
 }
 
+usersData[0].responses[0] = "tell my friend to reject them";
+usersData[1].responses[0] = "I'd probably just try to move on with my life. There are many fish in the sea."
+usersData[2].responses[0] = "honestly? I'd tell my friend to reject them or I'd be mad."
+usersData[3].responses[0] = "i will wish the best for them and cry alone in the corner of my room and do leetcode until I fall asleep knowing that I can never forget about her because she is my my exception."
+usersData[4].responses[0] = "I will punch my friend and never hang out with them again because it's just too socially awkward and i can't deal with situations like that I just can't it's not something I can even imagine."
 usersData[5].responses[0] = "I'd probably act happy for my best friend and then secretly try to sabatoge their relationship.";
+usersData[6].responses[0] = "I'd try to journal my feelings about it and not be too mad at my friend. It's not their fault."
+usersData[7].responses[0] = "idk";
+usersData[8].responses[0] = "move to China and never show my face here again";
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(

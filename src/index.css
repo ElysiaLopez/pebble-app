@@ -45,6 +45,7 @@ code {
   margin-right:25px;
   margin-top:25px;
   margin-bottom: 25px;
+  vertical-align: middle;
 }
 
 /* On mouse-over, add a deeper shadow */
@@ -62,6 +63,7 @@ code {
   font-family:Arial, Helvetica, sans-serif;
   border-radius: 5px; /* 5px rounded corners */
   margin-bottom: 100px;
+  margin-top: 100px;
 }
 
 .wrapper {
